@@ -1,4 +1,7 @@
 # 5243_project1-Team4
+2025/2/14  Jinze Shi: I have done the outlier task and find the we don't have repeat data,I have update the data(cleaned_selected_features.csv) and code(Data_col_lastest_version.ipynb). Please use the use data and code to move on your work.
+
+
 2025/2/13  Jinze  Shi:  I  have  upload  my  part  code(Data_col.ipynb)  and  the  csv  file(selected_features_with_names.csv),  which  you  can  use  directly.  !!!!!!!!Attention,when  you  use  use  the csv  data,  remember  that  the  feature(State)  should  be  the  object.  
 Below  is  what  I  have  done
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

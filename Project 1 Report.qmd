@@ -146,42 +146,43 @@ The key takeaways from the bar chart observations are as follows:
 
 ## Feature Engineering Process & Justification
 
-- ### Introduction  
+
 In our feature engineering process, we created several ratio-based and interaction features to better capture relationships between key socioeconomic variables. These features provide more nuanced insights into housing, income distribution, and family structure, which can improve model performance by enhancing predictive power.
 
-- ### Ratio-Based Features  
+## Ratio-Based Features  
 
-`PctHousOwnOcc_PctHousLess3BR = PctHousOwnOcc / (PctHousLess3BR + 1e-5)`
-- Captures the relationship between the proportion of owner-occupied housing and the percentage of houses with fewer than three bedrooms.
-- A high value may indicate a preference for smaller owner-occupied homes, while a low value may suggest ownership is more common in larger homes.
-- Helps assess housing market dynamics and affordability trends.
+### **`PctHousOwnOcc_PctHousLess3BR = PctHousOwnOcc / (PctHousLess3BR + 1e-5)`**  
+- Captures the relationship between the proportion of owner-occupied housing and the percentage of houses with fewer than three bedrooms.  
+- A high value may indicate a preference for smaller owner-occupied homes, while a low value may suggest ownership is more common in larger homes.  
+- Helps assess housing market dynamics and affordability trends.  
 
-`PersPerFam_householdsize = PersPerFam / (householdsize + 1e-5)`
-- Normalizes the number of people per family by the overall household size.
-- Helps differentiate between family-based households and shared living arrangements.
-- A higher value may indicate a concentration of family members within households, whereas a lower value may suggest more non-family occupants.
+### **`PersPerFam_householdsize = PersPerFam / (householdsize + 1e-5)`**  
+- Normalizes the number of people per family by the overall household size.  
+- Helps differentiate between family-based households and shared living arrangements.  
+- A higher value may indicate a concentration of family members within households, whereas a lower value may suggest more non-family occupants.  
 
-`NumUnderPov_householdsize = NumUnderPov / (householdsize + 1e-5)`
-- Highlights the proportion of individuals living under the poverty line relative to total household size.
-- Provides a more precise measurement of poverty density, which may be more informative than absolute poverty counts.
-- Captures localized socioeconomic distress and its potential impact on the community.
+### **`NumUnderPov_householdsize = NumUnderPov / (householdsize + 1e-5)`**  
+- Highlights the proportion of individuals living under the poverty line relative to total household size.  
+- Provides a more precise measurement of poverty density, which may be more informative than absolute poverty counts.  
+- Captures localized socioeconomic distress and its potential impact on the community.  
 
-`NumIlleg_PctWorkMomYoungKids = NumIlleg / (PctWorkMomYoungKids + 1e-5)`
-- Assesses the number of children born out of wedlock in relation to the percentage of working mothers with young kids.
-- A higher value may indicate social or economic pressures that contribute to higher rates of single-parent households.
-- Useful for analyzing child welfare, family stability, and labor market participation among mothers.
+### **`NumIlleg_PctWorkMomYoungKids = NumIlleg / (PctWorkMomYoungKids + 1e-5)`**  
+- Assesses the number of children born out of wedlock in relation to the percentage of working mothers with young kids.  
+- A higher value may indicate social or economic pressures that contribute to higher rates of single-parent households.  
+- Useful for analyzing child welfare, family stability, and labor market participation among mothers.  
 
-- ### Interaction Features  
+## Interaction Features  
 
-`MedRentPctHousInc_PctHousOwnOcc = MedRentPctHousInc * PctHousOwnOcc`
-- Captures the interaction between median rent as a percentage of household income and the percentage of owner-occupied homes.
-- Helps analyze how rental affordability correlates with homeownership rates.
-- A higher value might suggest that in areas where rent is a significant burden, homeownership rates tend to be either relatively low (due to affordability constraints) or high (due to an incentive to purchase rather than rent).
+### **`MedRentPctHousInc_PctHousOwnOcc = MedRentPctHousInc * PctHousOwnOcc`**  
+- Captures the interaction between median rent as a percentage of household income and the percentage of owner-occupied homes.  
+- Helps analyze how rental affordability correlates with homeownership rates.  
+- A higher value might suggest that in areas where rent is a significant burden, homeownership rates tend to be either relatively low (due to affordability constraints) or high (due to an incentive to purchase rather than rent).  
 
-`PersPerRentOccHous_PctWorkMomYoungKids = PersPerRentOccHous * PctWorkMomYoungKids`
-- Combines the number of people per rented occupied household with the percentage of working mothers with young kids.
-- Helps capture living density in rental housing and how it interacts with workforce participation among mothers.
-- A higher value may indicate areas where working mothers are more likely to live in densely populated rental homes, which could have implications for childcare access and economic well-being.
+### **`PersPerRentOccHous_PctWorkMomYoungKids = PersPerRentOccHous * PctWorkMomYoungKids`**  
+- Combines the number of people per rented occupied household with the percentage of working mothers with young kids.  
+- Helps capture living density in rental housing and how it interacts with workforce participation among mothers.  
+- A higher value may indicate areas where working mothers are more likely to live in densely populated rental homes, which could have implications for childcare access and economic well-being.  
+
 
 
 ## Summary of Key Findings

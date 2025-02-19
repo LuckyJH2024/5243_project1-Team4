@@ -14,3 +14,5 @@ If using Jupyter Notebook, open and run `Full_code_V1.ipynb` step by step.
 If converted to a Python script (`.py` file), run the script as follows:
 
 `python Full_code_V1.py`
+### Note
+If running in an IDE, execute the code cell by cell for better visualization.

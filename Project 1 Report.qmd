@@ -62,9 +62,9 @@ Text
 
 ## Exploratory Data Analysis (EDA) - Part 2
 
-The second part of the exploratory data analysis was prefaced by converting \'state\' to a categorical variable, so that it was not confused with the numerical data.
+The second part of the exploratory data analysis was prefaced by converting 'state' to a categorical variable, so that it was not confused with the numerical data.
 
-The first exploration conducted was the visualization of the correlation matrix to identify highly correlated features of the 9 features we are focusing on (excluding \'state\'). In this matrix, it was observed that the features with the highest correlation (above the absolute value of 0.5) were the following pairs:
+The first exploration conducted was the visualization of the correlation matrix to identify highly correlated features of the 9 features we are focusing on (excluding 'state'). In this matrix, it was observed that the features with the highest correlation (above the absolute value of 0.5) were the following pairs:
 
 -   PersPerRentOccHous & PctHousOwnOcc
 
@@ -116,7 +116,7 @@ The second exploration conducted was the visualization of the 10 highest correla
 
 -   [NumIlleg vs. householdsize:]{.underline} The number of children born out of wedlock has a weak or no strong correlation with the average household size. This suggests that other factors, like economic conditions and home ownership rates, may be stronger predictors or household size. One thing to note is the vertical clustering of points, which suggests data discretion in regards to NumIlleg, which may have been recorded in fixed increments rather than as a continuous variable. 
 
-The third exploration conducted was creating bar charts of the data count across states as well as the mean values of the 9 features (excluding \'state\') that are focused on. The first bar chart showed how many data points were collected for all states in the data. This ranged from the highest amount of data points in a state being right under 80, and the lowest being 1. The second bar chart showed the mean values of the 9 features calculated across all data points from all states. To see if there was a significant difference between the mean values of the highlighted features between the states with the highest counts of data points and the states with the lowest counts of data points, the following four bar charts were subsequently created: Top 10 States by Data Count, Mean Values of Features for Top 10 States, Bottom 10 States by Data Count, Mean Values for Features for Bottom 10 States. The following was observed for the mean values of each feature:
+The third exploration conducted was creating bar charts of the data count across states as well as the mean values of the 9 features (excluding 'state') that are focused on. The first bar chart showed how many data points were collected for all states in the data. This ranged from the highest amount of data points in a state being right under 80, and the lowest being 1. The second bar chart showed the mean values of the 9 features calculated across all data points from all states. To see if there was a significant difference between the mean values of the highlighted features between the states with the highest counts of data points and the states with the lowest counts of data points, the following four bar charts were subsequently created: Top 10 States by Data Count, Mean Values of Features for Top 10 States, Bottom 10 States by Data Count, Mean Values for Features for Bottom 10 States. The following was observed for the mean values of each feature:
 
 -   [PersPerFam:]{.underline} Overall had a mean value of \~0.62. Top 10 had a mean value of \~0.65 and Bottom 10 had a mean value of \~0.57.
 
@@ -146,46 +146,73 @@ The key takeaways from the bar chart observations are as follows:
 
 ## Feature Engineering Process & Justification
 
-
 In our feature engineering process, we created several ratio-based and interaction features to better capture relationships between key socioeconomic variables. These features provide more nuanced insights into housing, income distribution, and family structure, which can improve model performance by enhancing predictive power.
 
-## Ratio-Based Features  
+## Ratio-Based Features
 
-### **`PctHousOwnOcc_PctHousLess3BR = PctHousOwnOcc / (PctHousLess3BR + 1e-5)`**  
-- Captures the relationship between the proportion of owner-occupied housing and the percentage of houses with fewer than three bedrooms.  
-- A high value may indicate a preference for smaller owner-occupied homes, while a low value may suggest ownership is more common in larger homes.  
-- Helps assess housing market dynamics and affordability trends.  
+### **`PctHousOwnOcc_PctHousLess3BR = PctHousOwnOcc / (PctHousLess3BR + 1e-5)`**
 
-### **`PersPerFam_householdsize = PersPerFam / (householdsize + 1e-5)`**  
-- Normalizes the number of people per family by the overall household size.  
-- Helps differentiate between family-based households and shared living arrangements.  
-- A higher value may indicate a concentration of family members within households, whereas a lower value may suggest more non-family occupants.  
+-   Captures the relationship between the proportion of owner-occupied housing and the percentage of houses with fewer than three bedrooms.\
+-   A high value may indicate a preference for smaller owner-occupied homes, while a low value may suggest ownership is more common in larger homes.\
+-   Helps assess housing market dynamics and affordability trends.
 
-### **`NumUnderPov_householdsize = NumUnderPov / (householdsize + 1e-5)`**  
-- Highlights the proportion of individuals living under the poverty line relative to total household size.  
-- Provides a more precise measurement of poverty density, which may be more informative than absolute poverty counts.  
-- Captures localized socioeconomic distress and its potential impact on the community.  
+### **`PersPerFam_householdsize = PersPerFam / (householdsize + 1e-5)`**
 
-### **`NumIlleg_PctWorkMomYoungKids = NumIlleg / (PctWorkMomYoungKids + 1e-5)`**  
-- Assesses the number of children born out of wedlock in relation to the percentage of working mothers with young kids.  
-- A higher value may indicate social or economic pressures that contribute to higher rates of single-parent households.  
-- Useful for analyzing child welfare, family stability, and labor market participation among mothers.  
+-   Normalizes the number of people per family by the overall household size.\
+-   Helps differentiate between family-based households and shared living arrangements.\
+-   A higher value may indicate a concentration of family members within households, whereas a lower value may suggest more non-family occupants.
 
-## Interaction Features  
+### **`NumUnderPov_householdsize = NumUnderPov / (householdsize + 1e-5)`**
 
-### **`MedRentPctHousInc_PctHousOwnOcc = MedRentPctHousInc * PctHousOwnOcc`**  
-- Captures the interaction between median rent as a percentage of household income and the percentage of owner-occupied homes.  
-- Helps analyze how rental affordability correlates with homeownership rates.  
-- A higher value might suggest that in areas where rent is a significant burden, homeownership rates tend to be either relatively low (due to affordability constraints) or high (due to an incentive to purchase rather than rent).  
+-   Highlights the proportion of individuals living under the poverty line relative to total household size.\
+-   Provides a more precise measurement of poverty density, which may be more informative than absolute poverty counts.\
+-   Captures localized socioeconomic distress and its potential impact on the community.
 
-### **`PersPerRentOccHous_PctWorkMomYoungKids = PersPerRentOccHous * PctWorkMomYoungKids`**  
-- Combines the number of people per rented occupied household with the percentage of working mothers with young kids.  
-- Helps capture living density in rental housing and how it interacts with workforce participation among mothers.  
-- A higher value may indicate areas where working mothers are more likely to live in densely populated rental homes, which could have implications for childcare access and economic well-being.  
+### **`NumIlleg_PctWorkMomYoungKids = NumIlleg / (PctWorkMomYoungKids + 1e-5)`**
+
+-   Assesses the number of children born out of wedlock in relation to the percentage of working mothers with young kids.\
+-   A higher value may indicate social or economic pressures that contribute to higher rates of single-parent households.\
+-   Useful for analyzing child welfare, family stability, and labor market participation among mothers.
+
+## Interaction Features
+
+### **`MedRentPctHousInc_PctHousOwnOcc = MedRentPctHousInc * PctHousOwnOcc`**
+
+-   Captures the interaction between median rent as a percentage of household income and the percentage of owner-occupied homes.\
+-   Helps analyze how rental affordability correlates with homeownership rates.\
+-   A higher value might suggest that in areas where rent is a significant burden, homeownership rates tend to be either relatively low (due to affordability constraints) or high (due to an incentive to purchase rather than rent).
+
+### **`PersPerRentOccHous_PctWorkMomYoungKids = PersPerRentOccHous * PctWorkMomYoungKids`**
+
+-   Combines the number of people per rented occupied household with the percentage of working mothers with young kids.\
+-   Helps capture living density in rental housing and how it interacts with workforce participation among mothers.\
+-   A higher value may indicate areas where working mothers are more likely to live in densely populated rental homes, which could have implications for childcare access and economic well-being.
+
+We also applied various transformation techniques to improve model performance.
+
+###  Target Encoding
+- **State**: Applied **target encoding with cross-validation**.
+
+###  Standardization
+The following features were standardized to ensure consistent scaling:
+- **PersPerFam** (Persons per Family)
+- **PersPerRentOccHous** (Persons per Rented Occupied House)
+- **PctHousOwnOcc** (Percentage of Owner-Occupied Houses)
+- **PctWorkMomYoungKids** (Percentage of Working Mothers with Young Kids)
+- **MedRentPctHousInc** (Median Rent as a Percentage of Household Income)
+
+###  Log Transformation
+To normalize skewed distributions, log transformation was applied to:
+- **NumIlleg** (Number of Illegal Immigrants)
+- **NumUnderPov** (Number of People Under Poverty Line)
+
+###  Binarization
+To create binary indicators, binarization was applied to:
+- **PctHousLess3BR** (Percentage of Houses with Less than 3 Bedrooms)
 
 
 
-## Summary of Key Findings
+### Summary of Key Findings
 
 1.  Correlation Analysis
 

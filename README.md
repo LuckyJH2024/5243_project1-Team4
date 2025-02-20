@@ -4,7 +4,7 @@ This project performs Exploratory Data Analysis (EDA) on a subset of the Communi
 ## Prerequisites
 Before running the code, ensure that you have the following dependencies installed:
 ### Required Libraries
-`pip install pandas matplotlib seaborn numpy`
+`pip install pandas matplotlib seaborn numpy statsmodels`
 ## Running the Code
 ### 1. Jupyter Notebook (Recommended)
 If using Jupyter Notebook, open and run `Full_code_V1.ipynb` step by step.

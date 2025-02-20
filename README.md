@@ -14,5 +14,8 @@ If using Jupyter Notebook, open and run `Full_code_V1.ipynb` step by step.
 If converted to a Python script (`.py` file), run the script as follows:
 
 `python Full_code_V1.py`
-### Note
-If running in an IDE, execute the code cell by cell for better visualization.
+### Notes
+- If running in an IDE, execute the code cell by cell for better visualization.
+- You do not need the raw dataset downloaded to run the code, it is fetched directly via a url.
+- An intermediate dataset will be created after the data cleaning & inconsistency handling. It should be in the same directory as the code file.
+- The final dataset is produced after the feature engineering.
